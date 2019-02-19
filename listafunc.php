@@ -20,7 +20,12 @@ $funcionarios = listaFunc();
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+  
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 
+	<!-- //cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css
+	//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js -->
 </head>
 <body background="images/fundo_linhas.jpg">
 
@@ -46,12 +51,10 @@ $funcionarios = listaFunc();
 </div>
 <?php endif ?>
 
-
-
 <a href="index.php" class="btn btn-primary"><b><u>P</u>ágina <u>I</u>nicial</b></a>
 <a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionario</b></a>
 </dl>
-<table class="table table-striped table-bordered " id="funcionarios">
+<table class="table table-striped table-bordered" id="funcionarios">
 
 <caption>Funcionarios Duo <?php echo date('d-m-Y H:i');?></caption>
 	<thead>
@@ -87,8 +90,9 @@ $funcionarios = listaFunc();
 
 <script type="text/javascript">
 	
-$(document).ready(function() {
-    $('#pacientes').DataTable();
+$(document).ready( function () {
+    $('#funcionarios').DataTable();
+
 } );
 </script>
 </body>

@@ -43,7 +43,7 @@ function formatar(mascara, documento){
 	<link href="css/style.css" rel="stylesheet">
 
 </head>
-<body background="fundo_linhas.jpg">
+<body background="images/fundo_linhas.jpg">
 <h2 align="center">Cadastrar Novo Funcionario</h2>
 <div class="container">
 	<form method ="post" action="novo.php">
@@ -59,7 +59,7 @@ function formatar(mascara, documento){
 
 		<div class="form-group">
 			<label>Data Admissao</label>
-			<input type="date" name="data" class="form-control" maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
+			<input type="date" name="data" class="form-control" placeholder="Digite a data de Admissao"maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
 		</div>
 
 		<div class="form-group">
