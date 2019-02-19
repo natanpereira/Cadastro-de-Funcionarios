@@ -24,19 +24,33 @@ function listaFunc(){
 	return $retorno;
 }
 
-function cadastrarPacientes($nome,$cpf,$email){
-	$string_sql = "INSERT INTO pacientes (id,nome,cpf,email) VALUES (null,'$nome','$cpf','$email')";
+function cadastrarFunc($nome,$cpf,$dataAd, $cargo, $area, $salario){
+	$string_sql = "INSERT INTO funcionarios (id_func,nome_func,cpf_func,data_admissao,cargo,area,salario) VALUES (null,'$nome','$cpf','$dataAd','$cargo','$area','$salario')";
     mysql_query($string_sql);
+    if(mysql_query($sql)){
+		header("location:listafunc.php?msg=cadastro realizado com sucesso");
+	}else{
+		header("location:listafunc.php?msgErro=Erro ao realizar cadastro");
+	}
+	
+
 }
 
 
 function editarFunc($mostra,$nome_edit, $cargo_edit, $area_edit, $salario_edit){
-	$altFunc = "UPDATE funcionarios SET nome_func='$nome_edit', cargo='$cargo_edit', area='$area_edit', salario = '$salario_edit' WHERE id = '$mostra'";
+	$altFunc = "UPDATE funcionarios SET nome_func='$nome_edit', cargo='$cargo_edit', area='$area_edit', salario = '$salario_edit' WHERE id_func = '$mostra'";
 	mysql_query($altFunc);
+
+	if(mysql_query($sql)){
+		header("location:listafunc.php?msg=cadastro realizado com sucesso");
+	}else{
+		header("location:listafunc.php?msgErro=Erro ao realizar cadastro");
+	}
 }
 
+
 function mostraFunc($id_func){
-		$sql_mostra = "SELECT * FROM funcionarios WHERE id='$id_func'";
+		$sql_mostra = "SELECT * FROM funcionarios WHERE id_func='$id_func'";
 		$data_mostra = mysql_query($sql_mostra);
 		$retorno_mostra = getAssoc($data_mostra);
 	
@@ -45,12 +59,12 @@ function mostraFunc($id_func){
 
 function excluirFunc($params){
 	$id = $params['id'];
-	 $sql = "DELETE FROM funcionarios WHERE id = $id";
+	$sql = "DELETE FROM funcionarios WHERE id_func = $id";
 	
 	if(mysql_query($sql)){
-		header("location:listafunc.php?msg=Funcionario excluido com sucesso");
+		header("location:listafunc.php?msg=cadastro excluido com sucesso");
 	}else{
-		header("location:listafunc.php?msgErro=Erro ao excluir funcionario");
+		header("location:listafunc.php?msgErro=Erro ao excluir cadastro");
 	}
 }
 

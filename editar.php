@@ -18,7 +18,7 @@ if ($_POST){
  	   	 editarFunc($mostra,$nome_edit, $cargo_edit, $area_edit, $salario_edit);
  	header("location: listafunc.php");
 	}
-//$mostraFunc = mostraFunc($id_func);
+$mostraFunc = mostraFunc($id_func);
 
 ?>
 
@@ -42,7 +42,7 @@ if ($_POST){
 <h1 align="center" >Editar Cadastro Funcionarios</h1>
 <div class="container">
 
-<!-- <?php foreach($mostraFunc as $valor): ?> -->
+<?php foreach($mostraFunc as $valor): ?> 
 
 		<form method ="post" action="editar.php">
 		<div class="form-group">
@@ -55,32 +55,37 @@ if ($_POST){
 		</div>
 
 		<div class="form-group">
+			<label>CPF</label>
+			<input type="text" name="cpf" class="form-control" readonly="true" value="<?php echo $valor['cpf_func'];?>"  />
+		</div>
+
+		<div class="form-group">
 			<label>Data ADMISSAO</label>
-			<input type="text" name="cpf" class="form-control" required="true" value="<?php echo $valor['data_admissao'];?>"  />
+			<input type="date" name="data" class="form-control" readonly="true" value="<?php echo date('d/m/Y', strtotime($valor['data_admissao']));?>"  />
 		</div>
 
 		<div class="form-group">
 			<label>Cargo</label>
-			<input type="text" name="email" class="form-control" required="true" value="<?php echo $valor['cargo'];?>"  />			
+			<input type="text" name="cargo" class="form-control" required="true" value="<?php echo $valor['cargo'];?>"  />			
 		</div>
 		
 		<div class="form-group">
 			<label>Area</label>
-			<input type="text" name="email" class="form-control" required="true" value="<?php echo $valor['area'];?>"  />			
+			<input type="text" name="area" class="form-control" required="true" value="<?php echo $valor['area'];?>"  />			
 		</div>
 
 		<div class="form-group">
 			<label>Salario</label>
-			<input type="text" name="email" class="form-control" required="true" value="<?php echo $valor['salario'];?>"  />			
+			<input type="text" name="salario" class="form-control" required="true" value="<?php echo $valor['salario'];?>"  />			
 		</div>	
 
 		<div class="form-group">
-			<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Alterar</button>	
-			<!-- 
-		<?php endforeach?>	 -->
+			<button type="submit" class="btn btn-success">Alterar</button>	
+			
+		<?php endforeach?>	
 		</div>
 	</form> 
 </div>
-<a href="listafunc.php"><button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Voltar</button></a>
+<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
 </body>
 </html>

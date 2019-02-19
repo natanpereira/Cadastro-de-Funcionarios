@@ -5,9 +5,12 @@ include_once "configuracao.php";
 	if ($_POST){
 		 $nome = $_POST['nome']; 
    		 $cpf = $_POST['cpf'];
-   		 $email = $_POST['email'];
- 	   cadastrarPacientes($nome,$cpf,$email);
- 	   header("location: pacientes.php");
+   		 $dataAd = $_POST['data'];
+   		 $cargo = $_POST['cargo'];
+   		 $area = $_POST['area'];
+   		 $salario = $_POST['salario'];
+ 	   cadastrarFunc($nome,$cpf,$dataAd, $cargo, $area, $salario);
+ 	   header("location: listafunc.php");
 	}
      
 ?>
@@ -16,6 +19,17 @@ include_once "configuracao.php";
 <html>
 <head>
 	<title>Novo Funcionario</title>
+
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+   if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+}
+</script>
 
 	<link rel="stylesheet" href="mdl/material.min.css">
 	<script src="mdl/material.min.js"></script>
@@ -30,22 +44,22 @@ include_once "configuracao.php";
 
 </head>
 <body background="fundo_linhas.jpg">
-<h1 align="center">Cadastrar Novo Funcionario</h1>
+<h2 align="center">Cadastrar Novo Funcionario</h2>
 <div class="container">
 	<form method ="post" action="novo.php">
 		<div class="form-group">
 			<label>Nome Funcionario</label>
-			<input type="text" name="nome" class="form-control" required="true" value="" placeholder="Digite o nome do paciente" />
+			<input type="text" name="nome" class="form-control" required="true" value="" placeholder="Digite o nome do funcionario" />
 		</div>
 
 		<div class="form-group">
 			<label>CPF</label>
-			<input type="text" name="cpf" class="form-control" required="true" value="" placeholder="Digite o cpf" />
+			<input type="text" name="cpf" maxlength="14" class="form-control" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Digite o cpf" />
 		</div>
 
 		<div class="form-group">
 			<label>Data Admissao</label>
-			<input type="date" name="data" class="form-control" />			
+			<input type="date" name="data" class="form-control" maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
 		</div>
 
 		<div class="form-group">
@@ -54,23 +68,24 @@ include_once "configuracao.php";
 		</div>
 
 		<div class="form-group">
-			<label>Area</label>
-			<input type="text" name="area" class="form-control" required="true" value="" placeholder="Digite o email" />			
+			<label>Area </label>
+			<input type="text" name="area" class="form-control" required="true" value="" placeholder="Digite a Area" />	
+				
 		</div>
 
 		<div class="form-group">
 			<label>Salario</label>
-			<input type="text" name="salario" class="form-control" required="true" value="" placeholder="Digite o email" />			
+			<input type="text" name="salario" class="form-control" required="true" value="" placeholder="Digite o salario" />			
 		</div>
 
 		
 		<div class="form-group">
-			<button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Enviar</button>	
+			<button type="submit" class="btn btn-success">Enviar</button>	
 			
 		</div>
 	</form> 
 	
 </div>
-<a href="listafunc.php"><button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Voltar</button></a>
+<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
 </body>
 </html>

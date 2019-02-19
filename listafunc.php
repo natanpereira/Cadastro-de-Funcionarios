@@ -28,7 +28,26 @@ $funcionarios = listaFunc();
 
 
 <div class="container">
+
 <dl>
+<?php if(isset($_GET['msg'])):?>
+<div>
+	<div class="alert alert-primary" role="alert">
+	  <?php echo $_GET['msg']?>
+	</div>
+</div>
+<?php endif ?>
+
+<?php if(isset($_GET['msgErro'])):?>
+<div>
+	<div class="alert alert-danger" role="alert">
+	  <?php echo $_GET['msgErro']?>
+	</div>
+</div>
+<?php endif ?>
+
+
+
 <a href="index.php" class="btn btn-primary"><b><u>P</u>ágina <u>I</u>nicial</b></a>
 <a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionario</b></a>
 </dl>
@@ -36,7 +55,7 @@ $funcionarios = listaFunc();
 
 <caption>Funcionarios Duo <?php echo date('d-m-Y H:i');?></caption>
 	<thead>
-	<tr>
+	<tr bgcolor="#A4A4A4">
 		<th>Nome</th>
 		<th>Data Admissão</th>
 		<th>Cargo</th>
