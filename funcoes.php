@@ -32,8 +32,6 @@ function cadastrarFunc($nome,$cpf,$dataAd, $cargo, $area, $salario){
 	}else{
 		header("location:listafunc.php?msgErro=Erro ao realizar cadastro");
 	}
-	
-
 }
 
 

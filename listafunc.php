@@ -4,7 +4,7 @@ ini_set("display_errors",1);
 include_once "funcoes.php";
 include_once "configuracao.php";
 
-$funcionarios = listaFunc();
+$funcionarios = listafunc();
 
 ?>
 
@@ -20,20 +20,12 @@ $funcionarios = listaFunc();
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-  
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-
-	<!-- //cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css
-	//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 </head>
 <body background="images/fundo_linhas.jpg">
-
 <h1 align="center">Funcionarios</h1>
-
-
 <div class="container">
-
 <dl>
 <?php if(isset($_GET['msg'])):?>
 <div>
@@ -58,6 +50,7 @@ $funcionarios = listaFunc();
 
 <caption>Funcionarios Duo <?php echo date('d-m-Y H:i');?></caption>
 	<thead>
+
 	<tr bgcolor="#A4A4A4">
 		<th>Nome</th>
 		<th>Data Admissão</th>
@@ -69,7 +62,6 @@ $funcionarios = listaFunc();
 	</thead>
 	<tbody>
 <?php foreach($funcionarios as $valor): ?>
-	
 	<tr>
 		<td><?php echo $valor['nome_func']?></td>
 		<td><?php echo date('d/m/Y', strtotime($valor['data_admissao']))?></td>
@@ -84,7 +76,6 @@ $funcionarios = listaFunc();
  <?php endforeach?>
 </tbody>
 </table>
-
 </div>
 
 

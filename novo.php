@@ -2,10 +2,16 @@
 include_once "funcoes.php";
 include_once "configuracao.php";
    
+
 	if ($_POST){
 		 $nome = $_POST['nome']; 
    		 $cpf = $_POST['cpf'];
    		 $dataAd = $_POST['data'];
+
+   		 $dataAd = explode('/',$dataAd);
+   		 $dataAd = array_reverse($dataAd);
+   		 $dataAd = implode('-',$dataAd);
+   		 
    		 $cargo = $_POST['cargo'];
    		 $area = $_POST['area'];
    		 $salario = $_POST['salario'];
