@@ -51,10 +51,9 @@ $funcionarios = listafunc();
 
 <caption>Funcionarios Duo <?php echo date('d-m-Y H:i');?></caption>
 	<thead>
-
 	<tr bgcolor="#A4A4A4">
 		<th>Nome</th>
-		<th>Data Admissão</th>
+		<th>Admissão</th>
 		<th>Cargo</th>
 		<th>Area</th>
 		<th>Salario</th>

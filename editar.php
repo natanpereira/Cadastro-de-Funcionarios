@@ -66,10 +66,12 @@ $mostraFunc = mostraFunc($id_func);
 		<div class="form-group">
 			<label>Cargo</label>
 			<select name= "cargo" class="form-control">
-				<option select disabled selected="true"><?php echo $valor['cargo'];?></option>
+				<option selected="true"><?php echo $valor['cargo'];?></option>
 				<option>Administrador De Dados</option>
+				<option>Analista Financeiro Jr</option>
 				<option>Analista De Negócios Pl</option>
 				<option>Analista De Rh Sênior</option>
+				<option>Analista De Suporte JR</option>
 				<option>Analista De Suporte Pl</option>
 				<option>Analista De Suporte Sr</option>
 				<option>Analista De Suporte</option>
@@ -102,7 +104,7 @@ $mostraFunc = mostraFunc($id_func);
 		<div class="form-group">
 			<label>Area</label>
 			<select name="area" class="form-control">
-				<option selecte disabled selected="true"><?php echo $valor['area'];?></option>
+				<option selected="true"><?php echo $valor['area'];?></option>
 				<option>Administrativo e Financeiro</option>
 				<option>Desenvolvimento e Manutenção de Sistemas</option>
 				<option>Governança Corporativa</option>

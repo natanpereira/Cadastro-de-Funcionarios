@@ -1,4 +1,5 @@
 <?php
+header('Content-type: text/html; charset=utf-8');
 include_once "funcoes.php";
 include_once "configuracao.php";
    
@@ -65,8 +66,10 @@ function formatar(mascara, documento){
 			<select name="cargo" class="form-control">
 				<option select disabled selected="true">Selecione o cargo</option>
 				<option>Administrador De Dados</option>
+				<option>Analista Financeiro Jr</option>
 				<option>Analista De Negócios Pl</option>
 				<option>Analista De Rh Sênior</option>
+				<option>Analista De Suporte JR</option>
 				<option>Analista De Suporte Pl</option>
 				<option>Analista De Suporte Sr</option>
 				<option>Analista De Suporte</option>
@@ -95,6 +98,7 @@ function formatar(mascara, documento){
 				<option>PJ</option>
 			</select>
 			</div>
+
 			<div class="form-group">
 			<label>Area </label>
 			<select name="area" class="form-control">
@@ -116,10 +120,12 @@ function formatar(mascara, documento){
 				<option>Recursos Humanos</option>
 			</select>			
 		</div>
+
 		<div class="form-group">
 			<label>Salario</label>
 			<input type="text" name="salario" class="form-control" required="true" value="" placeholder="Digite o salario" />			
 		</div>
+
 		<div class="form-group">
 			<button type="submit" class="btn btn-success">Enviar</button>	
 		</div>
