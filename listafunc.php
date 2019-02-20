@@ -32,8 +32,9 @@ $funcionarios = listafunc();
 	<div class="alert alert-primary" role="alert">
 	  <?php echo $_GET['msg']?>
 	</div>
+
 </div>
-<?php endif ?>
+<?php endif?>
 
 <?php if(isset($_GET['msgErro'])):?>
 <div>
@@ -78,9 +79,7 @@ $funcionarios = listafunc();
 </table>
 </div>
 
-
 <script type="text/javascript">
-	
 $(document).ready( function () {
     $('#funcionarios').DataTable();
 

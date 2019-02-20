@@ -26,9 +26,8 @@ function listaFunc(){
 
 function cadastrarFunc($nome,$cpf,$dataAd, $cargo, $area, $salario){
 	$string_sql = "INSERT INTO funcionarios (id_func,nome_func,cpf_func,data_admissao,cargo,area,salario) VALUES (null,'$nome','$cpf','$dataAd','$cargo','$area','$salario')";
-    mysql_query($string_sql);
-    if(mysql_query($sql)){
-		header("location:listafunc.php?msg=cadastro realizado com sucesso");
+    if(mysql_query($string_sql)){
+		header("location:listafunc.php?msg=Cadastro realizado com sucesso");
 	}else{
 		header("location:listafunc.php?msgErro=Erro ao realizar cadastro");
 	}
@@ -37,12 +36,11 @@ function cadastrarFunc($nome,$cpf,$dataAd, $cargo, $area, $salario){
 
 function editarFunc($mostra,$nome_edit, $cargo_edit, $area_edit, $salario_edit){
 	$altFunc = "UPDATE funcionarios SET nome_func='$nome_edit', cargo='$cargo_edit', area='$area_edit', salario = '$salario_edit' WHERE id_func = '$mostra'";
-	mysql_query($altFunc);
 
-	if(mysql_query($sql)){
-		header("location:listafunc.php?msg=cadastro realizado com sucesso");
+	if(mysql_query($altFunc)){
+		header("location:listafunc.php?msg=Edição realizada com sucesso");
 	}else{
-		header("location:listafunc.php?msgErro=Erro ao realizar cadastro");
+		header("location:listafunc.php?msgErro=Erro ao editar cadastro");
 	}
 }
 
@@ -60,7 +58,7 @@ function excluirFunc($params){
 	$sql = "DELETE FROM funcionarios WHERE id_func = $id";
 	
 	if(mysql_query($sql)){
-		header("location:listafunc.php?msg=cadastro excluido com sucesso");
+		header("location:listafunc.php?msg=Cadastro excluido com sucesso");
 	}else{
 		header("location:listafunc.php?msgErro=Erro ao excluir cadastro");
 	}

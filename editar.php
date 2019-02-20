@@ -16,7 +16,6 @@ if ($_POST){
    		 $area_edit = $_POST['area'];
    		 $salario_edit = $_POST['salario'];
  	   	 editarFunc($mostra,$nome_edit, $cargo_edit, $area_edit, $salario_edit);
- 	header("location: listafunc.php");
 	}
 $mostraFunc = mostraFunc($id_func);
 
@@ -39,7 +38,7 @@ $mostraFunc = mostraFunc($id_func);
 
 </head>
 <body background="images/fundo_linhas.jpg"> 
-<h1 align="center" >Editar Cadastro Funcionarios</h1>
+<h2 align="center" >Editar Cadastro Funcionario</h2>
 <div class="container">
 
 <?php foreach($mostraFunc as $valor): ?> 
@@ -61,17 +60,65 @@ $mostraFunc = mostraFunc($id_func);
 
 		<div class="form-group">
 			<label>Data ADMISSAO</label>
-			<input type="date" name="data" class="form-control" readonly="true" value="<?php echo date('d/m/Y', strtotime($valor['data_admissao']));?>"  />
+			<input type="text" name="data" class="form-control" readonly="true" value="<?php echo date('d/m/Y', strtotime($valor['data_admissao']));?>"  />
 		</div>
 
 		<div class="form-group">
 			<label>Cargo</label>
-			<input type="text" name="cargo" class="form-control" required="true" value="<?php echo $valor['cargo'];?>"  />			
+			<select name= "cargo" class="form-control">
+				<option select disabled selected="true"><?php echo $valor['cargo'];?></option>
+				<option>Administrador De Dados</option>
+				<option>Analista De Negócios Pl</option>
+				<option>Analista De Rh Sênior</option>
+				<option>Analista De Suporte Pl</option>
+				<option>Analista De Suporte Sr</option>
+				<option>Analista De Suporte</option>
+				<option>Analista De Testes Jr</option>
+				<option>Analista Financeiro Sr</option>
+				<option>Analista Programador Pl</option>
+				<option>Analista Programador Sênior</option>
+				<option>Analista Programador Sr</option>
+				<option>Assistente Administrativo Pl</option>
+				<option>Assistente Comercial</option>
+				<option>Assistente Financeiro Sr</option>
+				<option>Coordenador De Infraestrutura</option>
+				<option>Coordenador De Operações</option>
+				<option>Coordenador De Projetos</option>
+				<option>DBA PI</option>
+				<option>Dba Sr</option>
+				<option>Estagiário</option>
+				<option>Gerente Administrativa</option>
+				<option>Gerente Comercial</option>
+				<option>Gerente De Governança</option>
+				<option>Gerente De Projetos</option>
+				<option>Líder Técnico</option>
+				<option>PJ - Analista de Teste</option>
+				<option>PJ - CEO</option>
+				<option>PJ - Marketing</option>
+				<option>PJ</option>
+			</select>			
 		</div>
 		
 		<div class="form-group">
 			<label>Area</label>
-			<input type="text" name="area" class="form-control" required="true" value="<?php echo $valor['area'];?>"  />			
+			<select name="area" class="form-control">
+				<option selecte disabled selected="true"><?php echo $valor['area'];?></option>
+				<option>Administrativo e Financeiro</option>
+				<option>Desenvolvimento e Manutenção de Sistemas</option>
+				<option>Governança Corporativa</option>
+				<option>Governança TI/Segurança da Informação</option>
+				<option>Informações Gerenciais</option>
+				<option>Infraestrutura</option>
+				<option>Inovação</option>
+				<option>Marketing</option>
+				<option>Negócios</option>
+				<option>Operações</option>
+				<option>Operações e Tecnologia</option>
+				<option>Pré-Vendas/Implatação</option>
+				<option>Projetos e relacionamento Internacional</option>
+				<option>Quality Assurance</option>
+				<option>Recursos Humanos</option>
+			</select>			
 		</div>
 
 		<div class="form-group">

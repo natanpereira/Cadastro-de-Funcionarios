@@ -1,5 +1,5 @@
 <?php
-
+echo "hello";
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +29,6 @@
 		<div>
 		<a href="novo.php">Novo Funcionario</a>
 		</div>
-		<br>
-		<div>
-		<a href="excluirmanual.php">Excluir Funcionario</a>
-		</div>
-
 	</ul>
 </nav>
 </header>
