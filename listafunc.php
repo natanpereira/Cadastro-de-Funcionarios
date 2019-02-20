@@ -22,31 +22,32 @@ $funcionarios = listafunc();
 	<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json">
 </head>
 <body background="images/fundo_linhas.jpg">
 <h1 align="center">Funcionarios</h1>
 <div class="container">
-<dl>
-<?php if(isset($_GET['msg'])):?>
-<div>
-	<div class="alert alert-primary" role="alert">
-	  <?php echo $_GET['msg']?>
-	</div>
 
-</div>
-<?php endif?>
+	<?php if(isset($_GET['msg'])):?>
+		<div>
+			<div class="alert alert-primary" role="alert">
+			  <?php echo $_GET['msg']?>
+			</div>
 
-<?php if(isset($_GET['msgErro'])):?>
-<div>
-	<div class="alert alert-danger" role="alert">
-	  <?php echo $_GET['msgErro']?>
-	</div>
-</div>
-<?php endif ?>
+		</div>
+		<?php endif?>
+
+		<?php if(isset($_GET['msgErro'])):?>
+		<div>
+			<div class="alert alert-danger" role="alert">
+			  <?php echo $_GET['msgErro']?>
+			</div>
+		</div>	
+	<?php endif ?>
 
 <a href="index.php" class="btn btn-primary"><b><u>P</u>ágina <u>I</u>nicial</b></a>
 <a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionario</b></a>
-</dl>
+
 <table class="table table-striped table-bordered" id="funcionarios">
 
 <caption>Funcionarios Duo <?php echo date('d-m-Y H:i');?></caption>
@@ -56,7 +57,7 @@ $funcionarios = listafunc();
 		<th>Admissão</th>
 		<th>Cargo</th>
 		<th>Area</th>
-		<th>Salario</th>
+		<th>Salário</th>
 		<th>Ações</th>
 	</tr>
 	</thead>
@@ -80,7 +81,31 @@ $funcionarios = listafunc();
 
 <script type="text/javascript">
 $(document).ready( function () {
-    $('#funcionarios').DataTable();
+    $('#funcionarios').DataTable({
+    	"language": {
+    		"sEmptyTable": "Nenhum registro encontrado",
+		    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+		    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+		    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+		    "sInfoPostFix": "",
+		    "sInfoThousands": ".",
+		    "sLengthMenu": "_MENU_ resultados por página",
+		    "sLoadingRecords": "Carregando...",
+		    "sProcessing": "Processando...",
+		    "sZeroRecords": "Nenhum registro encontrado",
+		    "sSearch": "Pesquisar",
+		    "oPaginate": {
+		        "sNext": "Próximo",
+		        "sPrevious": "Anterior",
+		        "sFirst": "Primeiro",
+		        "sLast": "Último"
+		    },
+		    "oAria": {
+		        "sSortAscending": ": Ordenar colunas de forma ascendente",
+		        "sSortDescending": ": Ordenar colunas de forma descendente"
+		    }
+		    }
+    });
 
 } );
 </script>
