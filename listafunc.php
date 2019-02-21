@@ -110,8 +110,8 @@ $funCargo = null;
 					<td><?php echo $valor['area']?></td>
 					<td><?php echo $valor['salario']?></td>
 					<td align="center">
-						<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success btn-sm">Editar</button></a> 
-						<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success btn-sm">Excluir</button></a>
+						<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-success btn-sm"><b>Editar</b></button></a> 
+						<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-danger btn-sm"><b>Excluir</b></button></a>
 					</td>
 				</tr>
 				<?php endforeach?>
