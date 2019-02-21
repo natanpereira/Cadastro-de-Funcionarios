@@ -59,17 +59,16 @@ $funCargo = null;
 			</dl>
 			<form method ="get" action="listafunc.php">
 			<div>
-					<select id="filtroSelect" name="filtro" class="custom-select custom-select-sm">
+					<select id="filtroSelect" name="filtro">
 						<option select disabled selected="true">--Filtrar por cargo--</option>
 						<option value="">Mostrar Todos</option>
 						<?php foreach($funcionarios as $valor): ?>
 						<option value="<?php echo $valor['cargo']?>"><?php echo $valor['cargo']?></option>
 						<?php endforeach?>
 					</select>
-						<br/><br/>
-					<button type="submit"  class="btn btn-primary btn-sm" style="float: right;">Atualizar</button>
+					<button type="submit"  class="btn btn-primary btn-sm">Atualizar</button>
 			</div>
-			<br/><br/>
+			<br/>
 			</form>
 
 
@@ -94,7 +93,7 @@ $funCargo = null;
 		<td><?php echo date('d/m/Y', strtotime($valor['data_admissao']))?></td>
 		<td><?php echo $valor['cargo']?></td>
 		<td><?php echo $valor['area']?></td>
-		<td><?php echo "R$".$valor['salario']?></td>
+		<td><?php echo $valor['salario']?></td>
 		<td align="center">
 			<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-success btn-sm"><b>EDITAR</b></button></a>
 			<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-danger btn-sm"><b>EXCLUIR</b></button></a>
@@ -109,7 +108,7 @@ $funCargo = null;
 					<td><?php echo date('d/m/Y', strtotime($valor['data_admissao']))?></td>
 					<td><?php echo $valor['cargo']?></td>
 					<td><?php echo $valor['area']?></td>
-					<td><?php echo "R$".$valor['salario']?></td>
+					<td><?php echo $valor['salario']?></td>
 					<td align="center">
 						<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success btn-sm">Editar</button></a> 
 						<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success btn-sm">Excluir</button></a>
@@ -161,6 +160,5 @@ $('#filtroSelect option').each(function(){
    }
 });
 </script>
-
 </body>
 </html>

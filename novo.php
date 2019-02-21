@@ -22,16 +22,7 @@ include_once "configuracao.php";
 <head>
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
 	<title>Novo Funcionário</title>
-<script>
-function formatar(mascara, documento){
-  var i = documento.value.length;
-  var saida = mascara.substring(0,1);
-  var texto = mascara.substring(i)
-   if (texto.substring(0,1) != saida){
-            documento.value += texto.substring(0,1);
-  }
-}
-</script>
+
 	<link rel="stylesheet" href="mdl/material.min.css">
 	<script src="mdl/material.min.js"></script>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -42,6 +33,9 @@ function formatar(mascara, documento){
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
   	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 	<link href="css/style.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+
 </head>
 <body background="images/fundo_linhas.jpg">
 <h2 align="center">Cadastrar Novo Funcionário</h2>
@@ -54,7 +48,7 @@ function formatar(mascara, documento){
 
 		<div class="form-group">
 			<label>CPF</label>
-			<input type="text" name="cpf" maxlength="14" class="form-control" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Digite o CPF" />
+			<input type="text" name="cpf" maxlength="14" class="form-control" OnKeyPress="formatar('###.###.###-##', this); return SomenteNumero(event)" placeholder="Digite o CPF" />
 		</div>
 
 		<div class="form-group">
@@ -124,7 +118,8 @@ function formatar(mascara, documento){
 
 		<div class="form-group">
 			<label>Salário</label>
-			<input type="text" name="salario" class="form-control" required="true" value="" placeholder="Digite o salário" />			
+
+			<input type="text" id="salario" name="salario" class="form-control" required="true" value="" placeholder="Digite o salário" data-thousands="." data-decimal="," data-prefix="R$ " />
 		</div>
 		<div class="form-group" >
 			<button type="submit" class="btn btn-success" style="float:right; ">Enviar</button>
@@ -133,4 +128,30 @@ function formatar(mascara, documento){
 	<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
 </div>
 </body>
+
+<script language='JavaScript'>
+function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;  
+    if((tecla>47 && tecla<58)) return true;
+    else{
+     if (tecla==8 || tecla==0) return true;
+else  return false;
+    }
+}
+</script>
+
+<script type="text/javascript">
+	$("#salario").maskMoney();
+</script>
+
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+   if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+}
+  </script>
 </html>

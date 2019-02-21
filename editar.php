@@ -12,6 +12,11 @@ if ($_POST){
 		 $mostra = $_POST['id'];
 		 $nome_edit = $_POST['nome']; 
    		 $dataAd = $_POST['data'];
+
+   		 $dataAd = explode('/',$dataAd);
+   		 $dataAd = array_reverse($dataAd);
+   		 $dataAd = implode('-',$dataAd);
+
    		 $cargo_edit = $_POST['cargo'];
    		 $area_edit = $_POST['area'];
    		 $salario_edit = $_POST['salario'];
@@ -36,6 +41,8 @@ $mostraFunc = mostraFunc($id_func);
 			<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 	  		<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>    
 			<link href="css/style.css" rel="stylesheet">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
 
 	</head>
 	<body background="images/fundo_linhas.jpg"> 
@@ -54,12 +61,12 @@ $mostraFunc = mostraFunc($id_func);
 
 				<div class="form-group">
 					<label>CPF</label>
-					<input type="text" name="cpf" class="form-control" readonly="true" value="<?php echo $valor['cpf_func'];?>"  />
+					<input type="text" name="cpf" class="form-control" maxlength="14" value="<?php echo $valor['cpf_func'];?>" OnKeyPress="formatar('###.###.###-##', this); return SomenteNumero(event)" />
 				</div>
 
 				<div class="form-group">
 					<label>Data admissão</label>
-					<input type="text" name="data" class="form-control" readonly="true" value="<?php echo date('d/m/Y', strtotime($valor['data_admissao']));?>"  />
+					<input type="text" name="data" readonly="true" class="form-control" value="<?php echo date('d/m/Y', strtotime($valor['data_admissao']));?>" />
 				</div>
 
 				<div class="form-group">
@@ -124,7 +131,9 @@ $mostraFunc = mostraFunc($id_func);
 
 				<div class="form-group">
 					<label>Salário</label>
-					<input type="text" name="salario" class="form-control" required="true" value="<?php echo $valor['salario'];?>"/>			
+<input type="text" id="salario" name="salario" class="form-control" required="true" value="<?php echo $valor['salario'];?>" placeholder="Digite o salário" data-thousands="." data-decimal="," data-prefix="R$ " />
+
+				
 				</div>	
 				<div class="form-group">
 					<button type="submit" class="btn btn-success" style="float: right;">Alterar</button>	
@@ -134,4 +143,31 @@ $mostraFunc = mostraFunc($id_func);
 			<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
 		</div>
 	</body>
+
+<script type="text/javascript">
+	$("#salario").maskMoney();
+</script>
+
+<script language='JavaScript'>
+function SomenteNumero(e){
+    var tecla=(window.event)?event.keyCode:e.which;  
+    if((tecla>47 && tecla<58)) return true;
+    else{
+     if (tecla==8 || tecla==0) return true;
+else  return false;
+    }
+}
+</script>
+
+<script>
+function formatar(mascara, documento){
+  var i = documento.value.length;
+  var saida = mascara.substring(0,1);
+  var texto = mascara.substring(i)
+   if (texto.substring(0,1) != saida){
+            documento.value += texto.substring(0,1);
+  }
+}
+  </script>
+
 </html>
