@@ -18,9 +18,9 @@ function getAssoc($data){
 
 function listaFunc(){
 		
-		$sql = "SELECT * FROM funcionarios";
-		$data = mysql_query($sql);
-		$retorno = getAssoc($data);
+	$sql = "SELECT * FROM funcionarios";
+	$data = mysql_query($sql);
+	$retorno = getAssoc($data);
 	return $retorno;
 }
 
@@ -62,10 +62,25 @@ function excluirFunc($params){
 	$sql = "DELETE FROM funcionarios WHERE id_func = $id";
 	
 	if(mysql_query($sql)){
-		header("location:listafunc.php?msg=cadastro excluido com sucesso");
+		header("location:listafunc.php?msg=Cadastro excluido!");
 	}else{
-		header("location:listafunc.php?msgErro=Erro ao excluir cadastro");
+		header("location:listafunc.php?msgErro=Erro ao excluir cadastro!");
 	}
+}
+
+function listaFuncCargo($cargo){
+		
+	$sql = "SELECT * FROM funcionarios WHERE cargo = '$cargo'";
+	$data = mysql_query($sql);
+	$retorno = getAssoc($data);
+	return $retorno;
+}
+
+function cargo($cargoFunc){
+	$sql = "SELECT DISTINCT * FROM funcionarios WHERE cargo = '$cargo' GROUP BY cargo";
+	$data = mysql_query($sql);
+	$retorno = getAssoc($data);
+	return $retorno;
 }
 
 ?>

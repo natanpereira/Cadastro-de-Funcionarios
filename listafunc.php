@@ -4,7 +4,10 @@ ini_set("display_errors",1);
 include_once "funcoes.php";
 include_once "configuracao.php";
 
+
+
 $funcionarios = listaFunc();
+$funCargo = null;
 
 ?>
 
@@ -23,20 +26,21 @@ $funcionarios = listaFunc();
 
 </head>
 <body background="images/fundo_linhas.jpg">
-
-<h1 align="center">Funcionarios</h1>
-
+<br/>
+<h1 align="center">Funcionários</h1>
 
 <div class="container">
 
 <dl>
+
 <?php if(isset($_GET['msg'])):?>
 <div>
-	<div class="alert alert-primary" role="alert">
+	<div class="alert alert-warning" role="alert">
 	  <?php echo $_GET['msg']?>
 	</div>
 </div>
 <?php endif ?>
+
 
 <?php if(isset($_GET['msgErro'])):?>
 <div>
@@ -44,52 +48,116 @@ $funcionarios = listaFunc();
 	  <?php echo $_GET['msgErro']?>
 	</div>
 </div>
-<?php endif ?>
+<?php endif?>
 
-
-
+<br/>
 <a href="index.php" class="btn btn-primary"><b><u>P</u>ágina <u>I</u>nicial</b></a>
-<a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionario</b></a>
+<a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionários</b></a>
+
+<br/><br/>
+
 </dl>
-<table class="table table-striped table-bordered " id="funcionarios">
-
-<caption>Funcionarios Duo <?php echo date('d-m-Y H:i');?></caption>
-	<thead>
-	<tr bgcolor="#A4A4A4">
-		<th>Nome</th>
-		<th>Data Admissão</th>
-		<th>Cargo</th>
-		<th>Area</th>
-		<th>Salario</th>
-		<th>Ações</th>
-	</tr>
-	</thead>
-	<tbody>
-<?php foreach($funcionarios as $valor): ?>
 	
-	<tr>
-		<td><?php echo $valor['nome_func']?></td>
-		<td><?php echo date('d/m/Y', strtotime($valor['data_admissao']))?></td>
-		<td><?php echo $valor['cargo']?></td>
-		<td><?php echo $valor['area']?></td>
-		<td><?php echo "R$".$valor['salario']?></td>
-		<td align="center">
-			<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success">EDITAR</button></a>
-			<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success">EXCLUIR</button></a>
-		</td>
-	</tr>
- <?php endforeach?>
-</tbody>
-</table>
+	<form method ="get" action="listafunc.php">
 
+		<select id="filtroSelect" name="filtro">
+			<option>--Filtrar por cargo--</option>
+			<?php foreach($funcionarios as $valor): ?>
+			<option value="<?php echo $valor['cargo']?>"><?php echo $valor['cargo']?></option>
+			<?php endforeach?>
+		</select>
+		<button type="submit"  class="btn btn-primary btn-sm" >Atualizar</button>
+		<br/><br/>
+		<table class="table table-striped table-bordered" id="funcionarios">
+			<caption>Funcionários Duo <?php echo date('d.m.Y H:i');?></caption>
+			<thead>
+				<tr bgcolor="#A4A4A4">
+					<th>Nome</th>
+					<th>Admissão</th>
+					<th>Cargo</th>
+					<th>Área</th>
+					<th>Salário</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<?php if(empty($_GET['filtro']) || $_GET['filtro'] == "--Filtrar por cargo--"): ?>
+				<?php foreach($funcionarios as $valor): ?>
+				<tr>
+					<td><?php echo $valor['nome_func']?></td>
+					<td><?php echo date('d/m/Y', strtotime($valor['data_admissao']))?></td>
+					<td><?php echo $valor['cargo']?></td>
+					<td><?php echo $valor['area']?></td>
+					<td><?php echo "R$".$valor['salario']?></td>
+					<td align="center">
+						<a href="editar.php?id=<?php echo $valor['id_func']?>">Editar</a> |
+						<a href="excluir.php?id=<?php echo $valor['id_func']?>">Excluir</a>
+					</td>
+				</tr>
+				<?php endforeach?>
+			<?php else: $funCargo = listaFuncCargo($_GET['filtro']);?>
+
+				<?php foreach($funCargo as $valor): ?>
+				<tr>
+					<td><?php echo $valor['nome_func']?></td>
+					<td><?php echo date('d/m/Y', strtotime($valor['data_admissao']))?></td>
+					<td><?php echo $valor['cargo']?></td>
+					<td><?php echo $valor['area']?></td>
+					<td><?php echo "R$".$valor['salario']?></td>
+					<td align="center">
+						<a href="editar.php?id=<?php echo $valor['id_func']?>">Editar</a> |
+						<a href="excluir.php?id=<?php echo $valor['id_func']?>">Excluir</a>
+					</td>
+				</tr>
+				<?php endforeach?>
+			<?php endif?>
+			</thead>
+		</table>
+	</form>
 </div>
 
 
 <script type="text/javascript">
 	
 $(document).ready(function() {
-    $('#pacientes').DataTable();
+    $('#funcionarios').DataTable({
+    	"language": {
+    		"sEmptyTable": "Nenhum registro encontrado",
+		    "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
+		    "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
+		    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
+		    "sInfoPostFix": "",
+		    "sInfoThousands": ".",
+		    "sLengthMenu": "_MENU_ resultados por página",
+		    "sLoadingRecords": "Carregando...",
+		    "sProcessing": "Processando...",
+		    "sZeroRecords": "Nenhum registro encontrado",
+		    "sSearch": "Pesquisar",
+
+		    "oPaginate": {
+		        "sNext": "Próximo",
+		        "sPrevious": "Anterior",
+		        "sFirst": "Primeiro",
+		        "sLast": "Último"
+		    },
+		    "oAria": {
+		        "sSortAscending": ": Ordenar colunas de forma ascendente",
+		        "sSortDescending": ": Ordenar colunas de forma descendente"
+		    }
+	    }
+    });
 } );
 </script>
+
+<script type="text/javascript">
+var optionValues =[];
+$('#filtroSelect option').each(function(){
+   if($.inArray(this.value, optionValues) >-1){
+      $(this).remove()
+   }else{
+      optionValues.push(this.value);
+   }
+});
+</script>
+
 </body>
 </html>
