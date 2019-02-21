@@ -9,15 +9,15 @@ $id_func = $_GET['id'];
 }
 
 if ($_POST){
-		 $mostra = $_POST['id'];
-		 $nome_edit = $_POST['nome']; 
-   		 $dataAd = $_POST['data'];
-   		 $cargo_edit = $_POST['cargo'];
-   		 $area_edit = $_POST['area'];
-   		 $salario_edit = $_POST['salario'];
- 	   	 editarFunc($mostra,$nome_edit, $cargo_edit, $area_edit, $salario_edit);
- 	header("location: listafunc.php");
-	}
+	$mostra = $_POST['id'];
+	$nome_edit = $_POST['nome']; 
+   	$dataAd = $_POST['data'];
+   	$cargo_edit = $_POST['cargo'];
+   	$area_edit = $_POST['area'];
+	$salario_edit = $_POST['salario'];
+   	editarFunc($mostra,$nome_edit, $cargo_edit, $area_edit, $salario_edit);
+	header("location: listafunc.php");
+}
 $mostraFunc = mostraFunc($id_func);
 
 ?>

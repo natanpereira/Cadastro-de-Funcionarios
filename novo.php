@@ -1,11 +1,17 @@
 <?php
 include_once "funcoes.php";
 include_once "configuracao.php";
+header('Content-type: text/html; charset=utf-8');
    
 	if ($_POST){
 		 $nome = $_POST['nome']; 
    		 $cpf = $_POST['cpf'];
    		 $dataAd = $_POST['data'];
+
+   		 $dataAd = explode('/', $dataAd);
+   		 $dataAd = array_reverse($dataAd);
+   		 $dataAd = implode('-', $dataAd);
+
    		 $cargo = $_POST['cargo'];
    		 $area = $_POST['area'];
    		 $salario = $_POST['salario'];
@@ -18,16 +24,16 @@ include_once "configuracao.php";
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Novo Funcionario</title>
+	<title>Novo Funcionário</title>
 
 <script>
 function formatar(mascara, documento){
-  var i = documento.value.length;
-  var saida = mascara.substring(0,1);
-  var texto = mascara.substring(i)
-   if (texto.substring(0,1) != saida){
-            documento.value += texto.substring(0,1);
-  }
+	var i = documento.value.length;
+  	var saida = mascara.substring(0,1);
+  	var texto = mascara.substring(i)
+   	if (texto.substring(0,1) != saida){
+   		documento.value += texto.substring(0,1);
+  	}
 }
 </script>
 
@@ -44,48 +50,48 @@ function formatar(mascara, documento){
 
 </head>
 <body background="fundo_linhas.jpg">
-<h2 align="center">Cadastrar Novo Funcionario</h2>
+<h2 align="center">Cadastrar Novo Funcionário</h2>
 <div class="container">
 	<form method ="post" action="novo.php">
 		<div class="form-group">
-			<label>Nome Funcionario</label>
-			<input type="text" name="nome" class="form-control" required="true" value="" placeholder="Digite o nome do funcionario" />
+			<label>Nome</label>
+			<input type="text" name="nome" class="form-control" required="true" value="" placeholder="Digite o nome do funcionário" />
 		</div>
 
 		<div class="form-group">
 			<label>CPF</label>
-			<input type="text" name="cpf" maxlength="14" class="form-control" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Digite o cpf" />
+			<input type="text" name="cpf" maxlength="14" class="form-control" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Digite o CPF do funcionário" />
 		</div>
 
 		<div class="form-group">
-			<label>Data Admissao</label>
-			<input type="date" name="data" class="form-control" maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
+			<label>Data Admissão</label>
+			<input type="date" name="data" class="form-control" placeholder="Digite a data de Admissao"maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
 		</div>
 
 		<div class="form-group">
 			<label>Cargo</label>
-			<input type="text" name="cargo" class="form-control" required="true" value="" placeholder="Digite o cargo" />			
+			<input type="text" name="cargo" class="form-control" required="true" value="" placeholder="Digite o cargo funcionário" />			
 		</div>
 
 		<div class="form-group">
-			<label>Area </label>
-			<input type="text" name="area" class="form-control" required="true" value="" placeholder="Digite a Area" />	
+			<label>Área </label>
+			<input type="text" name="area" class="form-control" required="true" value="" placeholder="Digite a área do funcionário" />	
 				
 		</div>
 
 		<div class="form-group">
-			<label>Salario</label>
+			<label>Salário</label>
 			<input type="text" name="salario" class="form-control" required="true" value="" placeholder="Digite o salario" />			
 		</div>
-
-		
-		<div class="form-group">
-			<button type="submit" class="btn btn-success">Enviar</button>	
-			
+		<div  align="right">
+			<button type="submit" class="btn btn-success">Enviar</button>
 		</div>
-	</form> 
-	
-</div>
-<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
+		
+		<div >
+			<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
+		</div>
+			
+		</form> 
+	</div>
 </body>
 </html>
