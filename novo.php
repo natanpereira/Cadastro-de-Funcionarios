@@ -20,7 +20,8 @@ include_once "configuracao.php";
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Novo Funcionario</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+	<title>Novo Funcionário</title>
 <script>
 function formatar(mascara, documento){
   var i = documento.value.length;
@@ -43,22 +44,22 @@ function formatar(mascara, documento){
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body background="images/fundo_linhas.jpg">
-<h2 align="center">Cadastrar Novo Funcionario</h2>
+<h2 align="center">Cadastrar Novo Funcionário</h2>
 <div class="container">
 	<form method ="post" action="novo.php">
 		<div class="form-group">
-			<label>Nome Funcionario</label>
-			<input type="text" name="nome" class="form-control" required="true" value="" placeholder="Digite o nome do funcionario" />
+			<label>Nome</label>
+			<input type="text" name="nome" class="form-control" required="true" value="" placeholder="Digite o nome do funcionário" />
 		</div>
 
 		<div class="form-group">
 			<label>CPF</label>
-			<input type="text" name="cpf" maxlength="14" class="form-control" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Digite o cpf" />
+			<input type="text" name="cpf" maxlength="14" class="form-control" OnKeyPress="formatar('###.###.###-##', this)" placeholder="Digite o CPF" />
 		</div>
 
 		<div class="form-group">
-			<label>Data Admissao</label>
-			<input type="date" name="data" class="form-control" placeholder="Digite a data de Admissao"maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
+			<label>Data Admissão</label>
+			<input type="date" name="data" class="form-control" placeholder="Digite a data de Admissão"maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
 		</div>
 
 		<div class="form-group">
@@ -100,9 +101,9 @@ function formatar(mascara, documento){
 			</div>
 
 			<div class="form-group">
-			<label>Area </label>
+			<label>Área </label>
 			<select name="area" class="form-control">
-				<option select disabled selected="true">Selecione a area</option>
+				<option select disabled selected="true">Selecione a área</option>
 				<option>Administrativo e Financeiro</option>
 				<option>Desenvolvimento e Manutenção de Sistemas</option>
 				<option>Governança Corporativa</option>
@@ -122,15 +123,14 @@ function formatar(mascara, documento){
 		</div>
 
 		<div class="form-group">
-			<label>Salario</label>
-			<input type="text" name="salario" class="form-control" required="true" value="" placeholder="Digite o salario" />			
+			<label>Salário</label>
+			<input type="text" name="salario" class="form-control" required="true" value="" placeholder="Digite o salário" />			
 		</div>
-
-		<div class="form-group">
-			<button type="submit" class="btn btn-success">Enviar</button>	
+		<div class="form-group" >
+			<button type="submit" class="btn btn-success" style="float:right; ">Enviar</button>
 		</div>
 	</form> 
+	<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
 </div>
-<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
 </body>
 </html>

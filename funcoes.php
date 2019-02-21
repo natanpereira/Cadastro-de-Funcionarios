@@ -64,4 +64,13 @@ function excluirFunc($params){
 	}
 }
 
+
+function listaFuncCargo($cargo){
+		
+	$sql = "SELECT * FROM funcionarios WHERE cargo = '$cargo'";
+	$data = mysql_query($sql);
+	$retorno = getAssoc($data);
+	return $retorno;
+}
+
 ?>

@@ -5,13 +5,16 @@ include_once "funcoes.php";
 include_once "configuracao.php";
 
 $funcionarios = listafunc();
+$funCargo = null;
+
 
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>	
-	<title>Funcionarios</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+	<title>Funcionários</title>
 	<link rel="stylesheet" href="https://cdn.datatable.net/1.10.19/css/jquery.dataTables.min.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -25,7 +28,7 @@ $funcionarios = listafunc();
 	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json">
 </head>
 <body background="images/fundo_linhas.jpg">
-<h1 align="center">Funcionarios</h1>
+<h1 align="center">Funcionários</h1>
 <div class="container">
 
 	<?php if(isset($_GET['msg'])):?>
@@ -46,7 +49,29 @@ $funcionarios = listafunc();
 	<?php endif ?>
 
 <a href="index.php" class="btn btn-primary"><b><u>P</u>ágina <u>I</u>nicial</b></a>
-<a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionario</b></a>
+<a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionário</b></a>
+
+
+
+
+			<br/><br/>
+
+			</dl>
+			<form method ="get" action="listafunc.php">
+			<div>
+					<select id="filtroSelect" name="filtro" class="custom-select custom-select-sm">
+						<option select disabled selected="true">--Filtrar por cargo--</option>
+						<option value="">Mostrar Todos</option>
+						<?php foreach($funcionarios as $valor): ?>
+						<option value="<?php echo $valor['cargo']?>"><?php echo $valor['cargo']?></option>
+						<?php endforeach?>
+					</select>
+						<br/><br/>
+					<button type="submit"  class="btn btn-primary btn-sm" style="float: right;">Atualizar</button>
+			</div>
+			<br/><br/>
+			</form>
+
 
 <table class="table table-striped table-bordered" id="funcionarios">
 
@@ -56,12 +81,13 @@ $funcionarios = listafunc();
 		<th>Nome</th>
 		<th>Admissão</th>
 		<th>Cargo</th>
-		<th>Area</th>
+		<th>Área</th>
 		<th>Salário</th>
 		<th>Ações</th>
 	</tr>
 	</thead>
 	<tbody>
+<?php if(empty($_GET['filtro']) || $_GET['filtro'] == "--Filtrar por cargo--"): ?>	
 <?php foreach($funcionarios as $valor): ?>
 	<tr>
 		<td><?php echo $valor['nome_func']?></td>
@@ -70,11 +96,27 @@ $funcionarios = listafunc();
 		<td><?php echo $valor['area']?></td>
 		<td><?php echo "R$".$valor['salario']?></td>
 		<td align="center">
-			<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success">EDITAR</button></a>
-			<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success">EXCLUIR</button></a>
+			<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-success btn-sm"><b>EDITAR</b></button></a>
+			<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-danger btn-sm"><b>EXCLUIR</b></button></a>
 		</td>
 	</tr>
  <?php endforeach?>
+ <?php else: $funCargo = listaFuncCargo($_GET['filtro']);?>
+
+ 	<?php foreach($funCargo as $valor): ?>
+				<tr>
+					<td><?php echo $valor['nome_func']?></td>
+					<td><?php echo date('d/m/Y', strtotime($valor['data_admissao']))?></td>
+					<td><?php echo $valor['cargo']?></td>
+					<td><?php echo $valor['area']?></td>
+					<td><?php echo "R$".$valor['salario']?></td>
+					<td align="center">
+						<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success btn-sm">Editar</button></a> 
+						<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-success btn-sm">Excluir</button></a>
+					</td>
+				</tr>
+				<?php endforeach?>
+			<?php endif?>
 </tbody>
 </table>
 </div>
@@ -89,7 +131,7 @@ $(document).ready( function () {
 		    "sInfoFiltered": "(Filtrados de _MAX_ registros)",
 		    "sInfoPostFix": "",
 		    "sInfoThousands": ".",
-		    "sLengthMenu": "_MENU_ resultados por página",
+		    "sLengthMenu": "_MENU_ Resultados por página",
 		    "sLoadingRecords": "Carregando...",
 		    "sProcessing": "Processando...",
 		    "sZeroRecords": "Nenhum registro encontrado",
@@ -109,5 +151,16 @@ $(document).ready( function () {
 
 } );
 </script>
+<script type="text/javascript">
+var optionValues =[];
+$('#filtroSelect option').each(function(){
+   if($.inArray(this.value, optionValues) >-1){
+      $(this).remove()
+   }else{
+      optionValues.push(this.value);
+   }
+});
+</script>
+
 </body>
 </html>

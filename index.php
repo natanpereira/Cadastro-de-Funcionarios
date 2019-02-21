@@ -5,7 +5,8 @@ header('Content-type: text/html; charset=utf-8');
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Funcionarios Duosystem</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+	<title>Página Inicial</title>
 	<link rel="stylesheet" href="https://cdn.datatable.net/1.10.19/css/jquery.dataTables.min.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -20,14 +21,14 @@ header('Content-type: text/html; charset=utf-8');
 <body background="images/fundo_linhas.jpg">
 <header>
 <nav>
-<h1 align="center">Funcionarios Duosystem</h1>
+<h1 align="center">Funcionários Duosystem</h1>
 	<ul>
 	<div>
-		<a href="listafunc.php">Listar Funcionarios</a>
+		<a href="listafunc.php">Listar Funcionários</a>
 		</div>
 		<br>
 		<div>
-		<a href="novo.php">Novo Funcionario</a>
+		<a href="novo.php">Novo Funcionário</a>
 		</div>
 	</ul>
 </nav>

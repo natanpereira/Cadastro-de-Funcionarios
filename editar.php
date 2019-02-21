@@ -24,7 +24,8 @@ $mostraFunc = mostraFunc($id_func);
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Editar Cadastro Paciente</title>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+	<title>Editar Cadastro Funcionário</title>
 		<link rel="stylesheet" href="mdl/material.min.css">
 		<script src="mdl/material.min.js"></script>
 		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -38,7 +39,7 @@ $mostraFunc = mostraFunc($id_func);
 
 </head>
 <body background="images/fundo_linhas.jpg"> 
-<h2 align="center" >Editar Cadastro Funcionario</h2>
+<h2 align="center" >Editar Cadastro Funcionário</h2>
 <div class="container">
 
 <?php foreach($mostraFunc as $valor): ?> 
@@ -59,7 +60,7 @@ $mostraFunc = mostraFunc($id_func);
 		</div>
 
 		<div class="form-group">
-			<label>Data ADMISSAO</label>
+			<label>Data admissão</label>
 			<input type="text" name="data" class="form-control" readonly="true" value="<?php echo date('d/m/Y', strtotime($valor['data_admissao']));?>"  />
 		</div>
 
@@ -102,7 +103,7 @@ $mostraFunc = mostraFunc($id_func);
 		</div>
 		
 		<div class="form-group">
-			<label>Area</label>
+			<label>Área</label>
 			<select name="area" class="form-control">
 				<option selected="true"><?php echo $valor['area'];?></option>
 				<option>Administrativo e Financeiro</option>
@@ -124,17 +125,16 @@ $mostraFunc = mostraFunc($id_func);
 		</div>
 
 		<div class="form-group">
-			<label>Salario</label>
+			<label>Salário</label>
 			<input type="text" name="salario" class="form-control" required="true" value="<?php echo $valor['salario'];?>"  />			
 		</div>	
-
 		<div class="form-group">
-			<button type="submit" class="btn btn-success">Alterar</button>	
-			
-		<?php endforeach?>	
+			<button type="submit" class="btn btn-success" style="float: right;">Alterar</button>	
 		</div>
 	</form> 
+	<?php endforeach?>	
+	<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
 </div>
-<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
+
 </body>
 </html>
