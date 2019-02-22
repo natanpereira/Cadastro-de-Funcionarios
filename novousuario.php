@@ -31,13 +31,13 @@ include_once "configuracao.php";
 	<div class="container">
 		<form method ="post" action="novousuario.php">
 			<div class="form-group">
-				<label>Nome</label>
-				<input type="text" name="nomeus" maxlength="20" class="form-control" required="true" value="" placeholder="Digite seu login" />
+				<label>Login</label>
+				<input type="text" name="nomeus" maxlength="20" class="form-control" required="true" value="" placeholder="Digite um login" />
 			</div>
 
 			<div class="form-group">
 				<label>Senha</label>
-				<input type="password" name="senhaus" class="form-control" required="true" value="" placeholder="Digite sua senha" />
+				<input type="password" name="senhaus" class="form-control" required="true" value="" placeholder="Digite uma senha" />
 			</div>
 
 			<div class="form-group" >
