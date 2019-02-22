@@ -19,6 +19,7 @@ $id_func = $_GET['id'];
 }
 
 if ($_POST){
+		
 		 $mostra = $_POST['id'];
 		 $nome_edit = $_POST['nome']; 
    		 $dataAd = $_POST['data'];
@@ -30,8 +31,9 @@ if ($_POST){
    		 $cargo_edit = $_POST['cargo'];
    		 $area_edit = $_POST['area'];
    		 $salario_edit = $_POST['salario'];
- 	   	 editarFunc($mostra,$nome_edit, $cargo_edit, $area_edit, $salario_edit);
+ 	   	editarFunc($mostra,$nome_edit, $cargo_edit, $area_edit, $salario_edit);
 	}
+
 $mostraFunc = mostraFunc($id_func);
 
 ?>

@@ -23,6 +23,10 @@ $funCargo = null;
 <head>	
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
 	<title>Funcionários</title>
+
+
+
+
 	<link rel="stylesheet" href="https://cdn.datatable.net/1.10.19/css/jquery.dataTables.min.css">
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -34,9 +38,9 @@ $funCargo = null;
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json">
+
 </head>
 <body background="images/fundo_linhas.jpg">
-
 <div class="container">
 	<h1 align="center">Funcionários</h1>
 	<?php if(isset($_GET['msg'])):?>
@@ -116,8 +120,8 @@ $funCargo = null;
 					<td><?php echo $valor['area']?></td>
 					<td><?php echo $valor['salario']?></td>
 					<td align="center">
-						<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-success btn-sm"><b>Editar</b></button></a> 
-						<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-danger btn-sm"><b>Excluir</b></button></a>
+						<a href="editar.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-success btn-sm"><b>Editar</b></button></a> 							
+						<a href="excluir.php?id=<?php echo $valor['id_func']?>"><button class="btn btn-outline-danger btn-sm"><b>Excluir</b></button></a> 
 					</td>
 				</tr>
 				<?php endforeach?>
