@@ -39,10 +39,52 @@ $funCargo = null;
 	<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json">
 
+
+<!-- CSS DO MENU -->
+<!-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="meucss.css"> -->
+
+
+
+
 </head>
 <body background="images/fundo_linhas.jpg">
+
+
+
+<!-- MENU NAO UTILIZADO NO MOMENTO-->
+<!-- <nav class="navbar navbar-expand-lg navbar-dark">
+            <a href="images/favicon.ico" class="navbar-brand">Logo</a>
+            <button class="navbar-toggler" type="button" data-target="#navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a href="#" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Product</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navdrop" role="button" data-toggle="dropdown" data-hover="dropdown">Services</a>
+                        <div class="dropdown-menu" aria-labelledby="navdrop">
+                            <a href="#" class="dropdown-item">Service1</a>
+                            <a href="#" class="dropdown-item">Service2</a>
+                            <a href="#" class="dropdown-item">Service3</a>
+                        </div>
+                        
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </nav> -->
+
 <div class="container">
-	<h1 align="center">Funcionários</h1>
 	<?php if(isset($_GET['msg'])):?>
 		<div>
 			<div class="alert alert-primary" role="alert">
@@ -60,6 +102,7 @@ $funCargo = null;
 		</div>	
 	<?php endif ?>
 
+<h1 align="center">Funcionários</h1>	
 <a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionário</b></a>
 <a href="logoff.php" class="btn btn-danger" style="float: right">Sair</a>
 
