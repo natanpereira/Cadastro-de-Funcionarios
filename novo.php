@@ -35,7 +35,7 @@ include_once "configuracao.php";
 
 
 	<script src="mdl/material.min.js"></script>
-
+<script type="text/javascript" src="meujs.js"></script>
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -63,7 +63,7 @@ include_once "configuracao.php";
 
 		<div class="form-group">
 			<label>Data admissão</label>
-			<input type="date" name="data" class="form-control" placeholder="Digite a data de admissão"maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
+			<input type="date" name="data" class="form-control" placeholder="Digite a data de admissão"maxlength="10" OnKeyPress="formatar('##/##/####', this)" />	
 		</div>
 
 		<div class="form-group">
@@ -138,30 +138,8 @@ include_once "configuracao.php";
 	<a href="listafunc.php"><button type="submit" class="btn btn-primary">Voltar</button></a>
 </div>
 </body>
-
-<script language='JavaScript'>
-function SomenteNumero(e){
-    var tecla=(window.event)?event.keyCode:e.which;  
-    if((tecla>47 && tecla<58)) return true;
-    else{
-     if (tecla==8 || tecla==0) return true;
-else  return false;
-    }
-}
-</script>
-
 <script type="text/javascript">
 	$("#salario").maskMoney();
 </script>
 
-<script>
-function formatar(mascara, documento){
-  var i = documento.value.length;
-  var saida = mascara.substring(0,1);
-  var texto = mascara.substring(i)
-   if (texto.substring(0,1) != saida){
-            documento.value += texto.substring(0,1);
-  }
-}
-  </script>
 </html>

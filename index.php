@@ -11,6 +11,7 @@ header('Content-type: text/html; charset=utf-8');
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="meucss.css">
+		<script type="text/javascript" src="meujs.js"></script>
 </head>
 <body background="images/fundo_linhas.jpg">
 <div class="wrapper fadeInDown">
@@ -36,7 +37,7 @@ header('Content-type: text/html; charset=utf-8');
     </div>
 
     <form method="post" action="login.php" id="formlogin" name="formlogin" >
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login">
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login" onkeypress="sem_acento(event)">
       <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="Senha">
       <input type="submit" class="fadeIn fourth" value="Logar">
     </form>
@@ -47,4 +48,7 @@ header('Content-type: text/html; charset=utf-8');
   </div>
 </div>
 </body>
+
+
+
 </html>

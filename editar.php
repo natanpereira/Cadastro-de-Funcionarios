@@ -41,6 +41,7 @@ $mostraFunc = mostraFunc($id_func);
 <!DOCTYPE html>
 <html>
 	<head>
+	<script type="text/javascript" src="meujs.js"></script>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
 		<title>Editar Cadastro Funcionário</title>
 			<script src="mdl/material.min.js"></script>
@@ -157,27 +158,5 @@ $mostraFunc = mostraFunc($id_func);
 <script type="text/javascript">
 	$("#salario").maskMoney();
 </script>
-
-<script language='JavaScript'>
-function SomenteNumero(e){
-    var tecla=(window.event)?event.keyCode:e.which;  
-    if((tecla>47 && tecla<58)) return true;
-    else{
-     if (tecla==8 || tecla==0) return true;
-else  return false;
-    }
-}
-</script>
-
-<script>
-function formatar(mascara, documento){
-  var i = documento.value.length;
-  var saida = mascara.substring(0,1);
-  var texto = mascara.substring(i)
-   if (texto.substring(0,1) != saida){
-            documento.value += texto.substring(0,1);
-  }
-}
-  </script>
 
 </html>
