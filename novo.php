@@ -1,4 +1,14 @@
 <?php
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  header('location:login.php');
+  }
+ 
+$logado = $_SESSION['login'];
+
 header('Content-type: text/html; charset=utf-8');
 include_once "funcoes.php";
 include_once "configuracao.php";
@@ -23,9 +33,9 @@ include_once "configuracao.php";
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
 	<title>Novo Funcionário</title>
 
-	<link rel="stylesheet" href="mdl/material.min.css">
+
 	<script src="mdl/material.min.js"></script>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 	<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
@@ -52,8 +62,8 @@ include_once "configuracao.php";
 		</div>
 
 		<div class="form-group">
-			<label>Data Admissão</label>
-			<input type="date" name="data" class="form-control" placeholder="Digite a data de Admissão"maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
+			<label>Data admissão</label>
+			<input type="date" name="data" class="form-control" placeholder="Digite a data de admissão"maxlength="10" OnKeyPress="formatar('##/##/####', this)" />			
 		</div>
 
 		<div class="form-group">

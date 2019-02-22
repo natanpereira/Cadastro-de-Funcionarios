@@ -1,4 +1,13 @@
 <?php
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  header('location:login.php');
+  } 
+$logado = $_SESSION['login'];
+
 header('Content-type: text/html; charset=utf-8');
 ini_set("display_errors",1);
 include_once "funcoes.php";
@@ -6,7 +15,6 @@ include_once "configuracao.php";
 
 $funcionarios = listafunc();
 $funCargo = null;
-
 
 ?>
 
@@ -28,9 +36,9 @@ $funCargo = null;
 	<link rel="stylesheet" href="//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json">
 </head>
 <body background="images/fundo_linhas.jpg">
-<h1 align="center">Funcionários</h1>
-<div class="container">
 
+<div class="container">
+	<h1 align="center">Funcionários</h1>
 	<?php if(isset($_GET['msg'])):?>
 		<div>
 			<div class="alert alert-primary" role="alert">
@@ -48,10 +56,8 @@ $funCargo = null;
 		</div>	
 	<?php endif ?>
 
-<a href="index.php" class="btn btn-primary"><b><u>P</u>ágina <u>I</u>nicial</b></a>
 <a href="novo.php" class="btn btn-primary"><b><u>N</u>ovo <u>F</u>uncionário</b></a>
-
-
+<a href="logoff.php" class="btn btn-danger" style="float: right">Sair</a>
 
 
 			<br/><br/>
@@ -74,7 +80,7 @@ $funCargo = null;
 
 <table class="table table-striped table-bordered" id="funcionarios">
 
-<caption>Funcionarios Duo <?php echo date('d-m-Y H:i');?></caption>
+<caption>Funcionários Duo <?php echo date('d-m-Y H:i');?></caption>
 	<thead>
 	<tr bgcolor="#A4A4A4">
 		<th>Nome</th>

@@ -1,4 +1,14 @@
 <?php
+session_start();
+if((!isset ($_SESSION['login']) == true) and (!isset ($_SESSION['senha']) == true))
+{
+  unset($_SESSION['login']);
+  unset($_SESSION['senha']);
+  header('location:login.php');
+  }
+ 
+$logado = $_SESSION['login'];
+
 header('Content-type: text/html; charset=utf-8');
 ini_set("display_errors",1);
 include_once "funcoes.php";
@@ -31,9 +41,7 @@ $mostraFunc = mostraFunc($id_func);
 	<head>
 	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
 		<title>Editar Cadastro Funcionário</title>
-			<link rel="stylesheet" href="mdl/material.min.css">
 			<script src="mdl/material.min.js"></script>
-			<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 			<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
 			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
 			<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>

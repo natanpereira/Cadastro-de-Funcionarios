@@ -4,33 +4,47 @@ header('Content-type: text/html; charset=utf-8');
 
 <!DOCTYPE html>
 <html>
-		<head>
-			<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
-			<title>Página Inicial</title>
-				<link rel="stylesheet" href="https://cdn.datatable.net/1.10.19/css/jquery.dataTables.min.css">
-				<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-				<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-				<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
-				<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-				<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
-				<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.css"/>
-				<script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
-				<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
-				<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-		</head>
-	<body background="images/fundo_linhas.jpg">
-		<header>
-			<div>
-				<div>
-				<h1 align="center" class="font-weight-bold">Funcionários Duosystem</h1>
-				</div>
-			<div style="text-align: center;"> 
-				<div class="btn-group" role="group" aria-label="Basic example">
-					<a href="listafunc.php"><button type="button" class="btn btn-primary" >Listar Funcionários</button></a>
-					<a href="novo.php"><button type="button" class="btn btn-primary">Novo Funcionário</button></a>	
-				</div>		
+<head>
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico"/>
+	<title>Login</title>
+		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="meucss.css">
+</head>
+<body background="images/fundo_linhas.jpg">
+<div class="wrapper fadeInDown">
+<?php if(isset($_GET['msg'])):?>
+		<div>
+			<div class="alert alert-primary" role="alert">
+			  <?php echo $_GET['msg']?>
 			</div>
+
+		</div>
+		<?php endif?>
+
+		<?php if(isset($_GET['msgErro'])):?>
+		<div>
+			<div class="alert alert-danger" role="alert">
+			  <?php echo $_GET['msgErro']?>
 			</div>
-		</header>
-	</body>
+		</div>	
+	<?php endif ?>
+  <div id="formContent">
+    <div class="fadeIn first">
+    <img  style="width: 15%" src="images/favicon (2).ico" id="icon" alt="User Icon" />
+    </div>
+
+    <form method="post" action="login.php" id="formlogin" name="formlogin" >
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Login">
+      <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="Senha">
+      <input type="submit" class="fadeIn fourth" value="Logar">
+    </form>
+    <div id="formFooter">
+      <a class="underlineHover" href="novousuario.php">Cadastrar novo usuario</a>
+    </div>
+</form>
+  </div>
+</div>
+</body>
 </html>

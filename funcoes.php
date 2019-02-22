@@ -71,4 +71,13 @@ function listaFuncCargo($cargo){
 	$retorno = getAssoc($data);
 	return $retorno;
 }
+
+function cadastrarUser($login,$senha){
+	$string_sql2 = "INSERT INTO usuario (id_usuario,login,senha_usuario) VALUES (null,'$login','$senha')";
+  	if(mysql_query($string_sql2)){
+		header("location:index.php?msg=Usuario cadastrado com sucesso");
+	}else{
+		header("location:index.php?msgErro=Erro ao cadastrar usuario");
+	}
+}
 ?>
